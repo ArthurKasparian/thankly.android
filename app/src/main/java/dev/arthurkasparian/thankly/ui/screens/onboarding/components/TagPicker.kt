@@ -2,10 +2,10 @@
  Copyright (c) 2023 ~ 2023 Arthur Kasparian, Individual All Rights Reserved
  Unauthorized copying of this file, via any medium is strictly prohibited
  Proprietary and confidential
- Written by Arthur Kasparian <contact@arthurkasparian.dev>, Month 12 2023. Last modified 29/12/2023, 10:42 pm
+ Written by Arthur Kasparian <contact@arthurkasparian.dev>, Month 12 2023. Last modified 30/12/2023, 10:17 pm
  */
 
-package dev.arthurkasparian.thankly.presentation.screens.onboarding.components
+package dev.arthurkasparian.thankly.ui.screens.onboarding.components
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
@@ -39,13 +39,15 @@ fun TagPicker(
     val backgroundColor: Color by animateColorAsState(
         if (toggled)
             MaterialTheme.colorScheme.primary
-        else MaterialTheme.colorScheme.background
+        else MaterialTheme.colorScheme.background,
+        label = "Toggle colour change"
     )
     
     val offset: Dp by animateDpAsState(
         if (toggled)
             0.dp
-        else (-2).dp
+        else (-2).dp,
+        label = "Toggle Offset"
     )
 
     Box(

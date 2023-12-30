@@ -2,10 +2,10 @@
  Copyright (c) 2023 ~ 2023 Arthur Kasparian, Individual All Rights Reserved
  Unauthorized copying of this file, via any medium is strictly prohibited
  Proprietary and confidential
- Written by Arthur Kasparian <contact@arthurkasparian.dev>, Month 12 2023. Last modified 29/12/2023, 10:42 pm
+ Written by Arthur Kasparian <contact@arthurkasparian.dev>, Month 12 2023. Last modified 30/12/2023, 10:17 pm
  */
 
-package dev.arthurkasparian.thankly.presentation.screens.onboarding
+package dev.arthurkasparian.thankly.ui.screens.onboarding
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -20,16 +20,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import dev.arthurkasparian.thankly.presentation.screens.onboarding.components.OnboardingButtonRow
-import dev.arthurkasparian.thankly.presentation.screens.onboarding.components.TagPicker
-import dev.arthurkasparian.thankly.presentation.theme.ThanklyTheme
+import dev.arthurkasparian.thankly.ui.screens.onboarding.components.OnboardingButtonRow
+import dev.arthurkasparian.thankly.ui.screens.onboarding.components.TagPicker
+import dev.arthurkasparian.thankly.ui.theme.ThanklyTheme
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun TagsScreen(
     modifier: Modifier = Modifier,
     onNextClick: () -> Unit,
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
+    onToggleTag: (String) -> Unit,
+    tags: List<String>
 ) {
 
     Column(
@@ -53,17 +55,23 @@ fun TagsScreen(
 
             FlowRow(
                 modifier = Modifier,
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.Top
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                verticalArrangement = Arrangement.spacedBy(4.dp)
             ) {
 
-                // Todo(Replace initial tag list)
-                listOf("Family", "Friends").forEach {
+                listOf(
+                    "Family",
+                    "Friends",
+                    "Pets",
+                    "Education",
+                    "Hobbies",
+                    "Music",
+                ).forEach {
 
                     TagPicker(
                         tag = it,
-                        toggled = false, // Todo(Add toggle state
-                        onToggle = {  } // Todo(Add toggle function)
+                        toggled = tags.contains(it), // Since we're already keeping track of the tags, we can just use the ViewModel state as opposed to a new rememberSaveable {}
+                        onToggle = { onToggleTag(it) }
                     )
                 }
 
@@ -83,7 +91,6 @@ fun TagsScreen(
 @Composable
 private fun TagsScreenPreview() {
     ThanklyTheme {
-
-        TagsScreen(onNextClick = {}, onBackClick = {})
+        TagsScreen(onNextClick = {}, onBackClick = {}, onToggleTag = {}, tags = listOf("Test Tag"))
     }
 }

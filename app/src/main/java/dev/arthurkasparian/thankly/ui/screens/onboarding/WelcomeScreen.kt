@@ -2,10 +2,10 @@
  Copyright (c) 2023 ~ 2023 Arthur Kasparian, Individual All Rights Reserved
  Unauthorized copying of this file, via any medium is strictly prohibited
  Proprietary and confidential
- Written by Arthur Kasparian <contact@arthurkasparian.dev>, Month 12 2023. Last modified 29/12/2023, 10:17 pm
+ Written by Arthur Kasparian <contact@arthurkasparian.dev>, Month 12 2023. Last modified 30/12/2023, 10:17 pm
  */
 
-package dev.arthurkasparian.thankly.presentation.screens.onboarding
+package dev.arthurkasparian.thankly.ui.screens.onboarding
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -23,8 +23,8 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import dev.arthurkasparian.thankly.R
-import dev.arthurkasparian.thankly.presentation.screens.onboarding.components.OnboardingButton
-import dev.arthurkasparian.thankly.presentation.theme.ThanklyTheme
+import dev.arthurkasparian.thankly.ui.screens.onboarding.components.OnboardingButton
+import dev.arthurkasparian.thankly.ui.theme.ThanklyTheme
 
 @Composable
 fun WelcomeScreen(

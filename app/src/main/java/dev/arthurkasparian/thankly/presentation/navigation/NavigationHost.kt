@@ -2,21 +2,29 @@
  Copyright (c) 2023 ~ 2023 Arthur Kasparian, Individual All Rights Reserved
  Unauthorized copying of this file, via any medium is strictly prohibited
  Proprietary and confidential
- Written by Arthur Kasparian <contact@arthurkasparian.dev>, Month 12 2023. Last modified 29/12/2023, 9:54 pm
+ Written by Arthur Kasparian <contact@arthurkasparian.dev>, Month 12 2023. Last modified 30/12/2023, 10:17 pm
  */
 
 package dev.arthurkasparian.thankly.presentation.navigation
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
-import dev.arthurkasparian.thankly.presentation.screens.onboarding.DescriptionScreen
-import dev.arthurkasparian.thankly.presentation.screens.onboarding.TagsScreen
-import dev.arthurkasparian.thankly.presentation.screens.onboarding.WelcomeScreen
+import dev.arthurkasparian.thankly.ThanklyApp
+import dev.arthurkasparian.thankly.presentation.OnboardingViewModel
+import dev.arthurkasparian.thankly.presentation.viewModelFactory
+import dev.arthurkasparian.thankly.ui.screens.onboarding.DescriptionScreen
+import dev.arthurkasparian.thankly.ui.screens.onboarding.TagsScreen
+import dev.arthurkasparian.thankly.ui.screens.onboarding.WelcomeScreen
+import kotlinx.coroutines.launch
 
 @Composable
 fun NavigationHost(
@@ -52,6 +60,18 @@ fun NavigationHost(
             }
 
             composable(OnboardingScreens.Tags.name) {
+
+                val viewModel = viewModel<OnboardingViewModel>(
+                    factory = viewModelFactory {
+                        OnboardingViewModel(
+                            ssh = SavedStateHandle(),
+                            repository = ThanklyApp.onboardingModule.tagRepository
+                        )
+                    }
+                )
+
+                val scope = rememberCoroutineScope()
+
                 TagsScreen(
                     onBackClick = { navController.popBackStack() },
                     onNextClick = {
@@ -61,7 +81,12 @@ fun NavigationHost(
                         // navController.clearBackStack(NavigationGraphs.Journal.name)
 
                         // navController.navigate(NavigationGraphs.Journal.name)
-                    }
+                        scope.launch {
+                            viewModel.saveTags()
+                        }
+                    },
+                    onToggleTag = { viewModel.toggleTag(it) },
+                    tags = viewModel.tags.collectAsState().value
                 )
             }
 

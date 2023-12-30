@@ -54,6 +54,13 @@ The list below is naturally subject to change over time.
 - Jetpack Compose
 - Compose Navigation
 
+#### State
+- ViewModels (MVVM Pattern)
+- SavedStateHandle
+
+#### Utility
+- Manual DI
+
 #### Data:
 - Room Database
 - Proto Datastore

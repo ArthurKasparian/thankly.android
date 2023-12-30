@@ -2,10 +2,10 @@
  Copyright (c) 2023 ~ 2023 Arthur Kasparian, Individual All Rights Reserved
  Unauthorized copying of this file, via any medium is strictly prohibited
  Proprietary and confidential
- Written by Arthur Kasparian <contact@arthurkasparian.dev>, Month 12 2023. Last modified 29/12/2023, 6:18 pm
+ Written by Arthur Kasparian <contact@arthurkasparian.dev>, Month 12 2023. Last modified 30/12/2023, 10:17 pm
  */
 
-package dev.arthurkasparian.thankly.presentation.screens
+package dev.arthurkasparian.thankly.ui.screens
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import dev.arthurkasparian.thankly.presentation.navigation.NavigationHost
-import dev.arthurkasparian.thankly.presentation.screens.components.BottomBar
+import dev.arthurkasparian.thankly.ui.screens.components.BottomBar
 
 @Composable
 fun MainScreen(

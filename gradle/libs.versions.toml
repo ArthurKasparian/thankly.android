@@ -15,6 +15,7 @@ datastore = "1.0.0"
 kotlinxCollectionsImmutable = "0.3.7"
 kotlinxSerializationJson = "1.6.0"
 kotlinxSerializationPlugin = "1.6.10"
+viewmodel = "2.6.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -39,6 +40,7 @@ compose-navigation = { group = "androidx.navigation", name = "navigation-compose
 proto-datastore = { group = "androidx.datastore", name = "datastore", version.ref = "datastore" }
 kotlinx-collections-immutable = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "kotlinxCollectionsImmutable" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "viewmodel" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
